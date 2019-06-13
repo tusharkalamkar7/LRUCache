@@ -3,8 +3,9 @@ package com.lru.serviceimpl;
 
 import java.util.HashMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.lru.core.Node;
@@ -12,13 +13,15 @@ import com.lru.dto.NodeDTO;
 import com.lru.mapper.NodeMapper;
 import com.lru.service.LRUCacheService;
 
+
 @Service
 public class LRUCacheServiceImpl implements LRUCacheService{
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(LRUCacheServiceImpl.class);
+	
 	private HashMap<Integer, Node> map; 
 	private int count; 
-	//@Value("2")
-	private int capicity=2;
+	protected int capicity = 2;
 	
 	private Node head, tail; 
 	
@@ -57,10 +60,14 @@ public class LRUCacheServiceImpl implements LRUCacheService{
             int result = node.value; 
             deleteNode(node); 
             addToHead(node); 
+            LOGGER.info("Got the value : " + 
+                    result + " for the key: " + key);
             System.out.println("Got the value : " + 
                   result + " for the key: " + key); 
             return NodeMapper.mapModelToDTO(node); 
         } 
+        LOGGER.info("Did not get any value" + 
+                " for the key: " + key);
         System.out.println("Did not get any value" + 
                             " for the key: " + key); 
         return null; 
@@ -71,6 +78,8 @@ public class LRUCacheServiceImpl implements LRUCacheService{
     { 
         System.out.println("Going to set the (key, "+  
              "value) : (" + key + ", " + value + ")"); 
+        LOGGER.info("Going to set the (key, "+  
+                "value) : (" + key + ", " + value + ")");
         if (map.get(key) != null) { 
             Node node = map.get(key); 
             node.value = value; 
