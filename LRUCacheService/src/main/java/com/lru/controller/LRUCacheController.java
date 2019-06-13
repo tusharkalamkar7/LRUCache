@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lru.core.EmptyJsonResponse;
 import com.lru.dto.NodeDTO;
 import com.lru.service.LRUCacheService;
 
@@ -33,11 +34,12 @@ public class LRUCacheController {
 	}
 	
 	@RequestMapping(value = "/put/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<NodeDTO> addTransport(@PathVariable("id") Integer id,@RequestBody NodeDTO nodeDto) {
+	public ResponseEntity put(@PathVariable("id") Integer id,@RequestBody NodeDTO nodeDto) {
 		NodeDTO dto = service.set(id, nodeDto.getValue());
 		if(id == dto.getKey())
-			dto = null;
-		return new ResponseEntity<NodeDTO>(dto, HttpStatus.OK);
+			return new ResponseEntity(new EmptyJsonResponse(), HttpStatus.OK);
+		else
+			return new ResponseEntity(dto, HttpStatus.OK);
 	}
 	
 	
