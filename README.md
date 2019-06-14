@@ -7,6 +7,7 @@ Software requirement:
 Our application supported the following operations: get and put service exposed by REST API.
 
 Steps to follow:
+
 Step 1) Import the Spring boot project to Eclipse IDE
 
 Step 2) Run "LRUCacheServiceApplication.java" which is located at "LRUCacheService/src/main/java/com/lru/application/".
