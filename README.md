@@ -12,6 +12,7 @@ Step 1) Import the Spring boot project to Eclipse IDE
 Step 2) Run "LRUCacheServiceApplication.java" which is located at "LRUCacheService/src/main/java/com/lru/application/".
 
 Step3 ) Perform following operations sequentially to get the expected output in Postman or through console.
+
 curl XPUT http://cache.service/api/v1/put/1 -d "value=400"
 200
 {
