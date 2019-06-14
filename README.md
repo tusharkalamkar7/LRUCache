@@ -14,7 +14,7 @@ Step 2) Run "LRUCacheServiceApplication.java" which is located at "LRUCacheServi
 
 Step3 ) Perform following operations sequentially to get the expected output in Postman or through console.
 
-curl XPUT http://cache.service/api/v1/put/1 -d "value=400"
+curl XPUT http://localhost:8080/api/v1/put/1 -d "value=400"
 200
 {
 }
