@@ -2,7 +2,6 @@ Implemented a data structure for Least Recently Used (LRU) cache service.
 
 Software requirement:
 1)JDK 1.8
-
 2)Spring Boot 2.1.5
 
 Our application supported the following operations: get and put service exposed by REST API.
@@ -12,7 +11,7 @@ Step 1) Import the Spring boot project to Eclipse IDE
 
 Step 2) Run "LRUCacheServiceApplication.java" which is located at "LRUCacheService/src/main/java/com/lru/application/".
 
-Step3 ) Perform following operations sequentially to get the expected output in Postman or through console.
+Step3 ) Performed following operations sequentially to get the expected output in Postman or through console:
 
 curl XPUT http://localhost:8080/api/v1/put/1 -d "value=400"
 200
@@ -65,8 +64,8 @@ curl XGET http://localhost:8080/api/v1/get/4
   value: 1600
 }
 
-Note: Deafult port of tomcat is 8080
+Note: Deafult port of tomcat is 8080.
 
 Additional Information:
 
-
+UT coverage class named "TestLRUCache.java" located at "LRUCacheService/src/test/java/com/lru/project/". By running the class, we will able to test the cases implemented by our application.
